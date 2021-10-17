@@ -1,0 +1,19 @@
+query allRoutes {
+  allRoutes {
+    edges {
+      node {
+        origin {
+          code
+          name
+          id
+        }
+        destination {
+          code
+          name
+          id
+        }
+        id
+      }
+    }
+  }
+}

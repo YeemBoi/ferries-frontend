@@ -1,0 +1,56 @@
+query allCCRoutes {
+  allRouteInfo(conditionsAreTracked: true) {
+    edges {
+      node {
+        route {
+          origin {
+            city {
+              code
+              name
+              id
+            }
+            geoArea {
+              code
+              name
+              id
+            }
+            code
+            name
+            slug
+            officialPage
+            id
+          }
+          destination {
+            city {
+              code
+              name
+              sortOrder
+              id
+            }
+            geoArea {
+              code
+              name
+              sortOrder
+              id
+            }
+            code
+            name
+            slug
+            officialPage
+            id
+          }
+          id
+        }
+        originalIndex
+        lengthType
+        isBookable
+        isWalkOn
+        allowMotorcycles
+        allowLivestock
+        allowWalkOnOptions
+        allowAdditionalPassengerTypes
+        id
+      }
+    }
+  }
+}

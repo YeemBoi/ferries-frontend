@@ -1,0 +1,51 @@
+query terminals($code: String) {
+  terminal: allTerminals(code: $code) {
+    edges {
+      node {
+        city {
+          code
+          name
+          sortOrder
+          id
+        }
+        geoArea {
+          code
+          name
+          sortOrder
+          id
+        }
+        destinationRoutes {
+          edges {
+            node {
+              destination {
+                name
+                code
+                slug
+                officialPage
+                id
+              }
+            }
+          }
+        }
+        originRoutes {
+          edges {
+            node {
+              origin {
+                name
+                code
+                slug
+                officialPage
+                id
+              }
+            }
+          }
+        }
+        code
+        name
+        slug
+        officialPage
+        id
+      }
+    }
+  }
+}

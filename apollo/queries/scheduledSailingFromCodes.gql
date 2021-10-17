@@ -1,0 +1,35 @@
+query scheduledSailingFromCodes($originCode: String, $destCode: String, $date: DateTime) {
+  scheduledSailings: allScheduledSailings(
+    sailing_Route_Origin_Code: $originCode
+    sailing_Route_Destination_Code: $destCode
+    time_Date: $date
+  ) {
+    edges {
+      node {
+        sailing {
+          stops {
+            edges {
+              node {
+                terminal {
+                  code
+                  name
+                  id
+                }
+                isTransfer
+                isCertain
+                id
+                
+              }
+            }
+          }
+          duration
+          officialPage
+          fetchedTime
+          id
+        }
+        time
+        id
+      }
+    }
+  }
+}

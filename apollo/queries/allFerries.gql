@@ -1,0 +1,26 @@
+query {
+  allFerries {
+    edges {
+      node {
+        services(isAdditional: false) {
+          edges {
+            node {
+              name
+              id
+            }
+          }
+        }
+        code
+        name
+        built
+        carCapacity
+        humanCapacity
+        horsepower
+        maxDisplacement
+        maxSpeed
+        totalLength
+        id
+      }
+    }
+  }
+}

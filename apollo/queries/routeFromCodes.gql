@@ -1,0 +1,64 @@
+query routeFromCodes($originCode: String, $destCode: String) {
+  route: allRoutes(origin_Code: $originCode, destination_Code: $destCode) {
+    edges {
+      node {
+        origin {
+          city {
+            code
+            name
+            sortOrder
+            id
+          }
+          geoArea {
+            code
+            name
+            sortOrder
+            id
+          }
+          code
+          name
+          slug
+          officialPage
+          fetchedTime
+          id
+        }
+        destination {
+          city {
+            code
+            name
+            sortOrder
+            id
+          }
+          geoArea {
+            code
+            name
+            sortOrder
+            id
+          }
+          code
+          name
+          slug
+          officialPage
+          fetchedTime
+          id
+        }
+        infoSet {
+          edges {
+            node {
+              originalIndex
+              lengthType
+              isBookable
+              isWalkOn
+              allowMotorcycles
+              allowLivestock
+              allowWalkOnOptions
+              allowAdditionalPassengerTypes
+              id
+            }
+          }
+        }
+        id
+      }
+    }
+  }
+}

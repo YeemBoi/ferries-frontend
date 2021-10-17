@@ -1,0 +1,102 @@
+query ($originCode: String, $destCode: String) {
+  routeInfo: allRouteInfo(
+    route_Origin_Code: $originCode
+    route_Destination_Code: $destCode
+    conditionsAreTracked: true
+  ) {
+    edges {
+      node {
+        route {
+          origin {
+            city {
+              code
+              name
+              sortOrder
+              id
+            }
+            geoArea {
+              code
+              name
+              sortOrder
+              id
+            }
+            code
+            name
+            slug
+            officialPage
+            fetchedTime
+            id
+          }
+          destination {
+            city {
+              code
+              name
+              sortOrder
+              id
+            }
+            geoArea {
+              code
+              name
+              sortOrder
+              id
+            }
+            code
+            name
+            slug
+            officialPage
+            fetchedTime
+            id
+          }
+          id
+        }
+        pastSailings: currentSailings(hasArrived: true) {
+          edges {
+            node {
+              ferry {
+                code
+                name
+                id
+              }
+              scheduledTime
+              actualTime
+              arrivalTime
+              status
+              officialPage
+              fetchedTime
+              id
+            }
+          }
+        }
+        futureSailings: currentSailings(hasArrived: false) {
+          edges {
+            node {
+              ferry {
+                code
+                name
+                id
+              }
+              scheduledTime
+              actualTime
+              arrivalTime
+              mixedVehiclePercentage
+              standardVehiclePercentage
+              totalCapacityPercentage
+              status
+              officialPage
+              fetchedTime
+              id
+            }
+          }
+        }
+        originalIndex
+        lengthType
+        isBookable
+        isWalkOn
+        allowMotorcycles
+        allowLivestock
+        allowWalkOnOptions
+        allowAdditionalPassengerTypes
+      }
+    }
+  }
+}

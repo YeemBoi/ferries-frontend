@@ -1,0 +1,36 @@
+query ($code: String) {
+  ferry: allFerries(code: $code) {
+    edges {
+      node {
+        mainAmenities: services(isAdditional: false) {
+          edges {
+            node {
+              name
+              id
+            }
+          }
+        }
+        services: services(isAdditional: true) {
+          edges {
+            node {
+              name
+              id
+            }
+          }
+        }
+        code
+        name
+        built
+        carCapacity
+        humanCapacity
+        horsepower
+        maxDisplacement
+        maxSpeed
+        totalLength
+        officialPage
+        fetchedTime
+        id
+      }
+    }
+  }
+}
