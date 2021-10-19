@@ -2,6 +2,17 @@
   <ApolloResult :items="routeInfo" :query="$apollo.queries.routeInfo">
     <template #default="routeInfoItem">
       <Route set-head :route="routeInfoItem.route" />
+      <v-container>
+        <v-chip-group>
+          <RouteProp
+            v-for="chipProp in routeprops.filter(
+              (chipProp) => routeInfoItem[chipProp.value]
+            )"
+            :key="chipProp.value"
+            v-bind="chipProp"
+          />
+        </v-chip-group>
+      </v-container>
       <div class="d-flex flex-column flex-xl-row">
         <v-container v-for="sailing in sailings" :key="sailing.text">
           <v-subheader
@@ -30,7 +41,10 @@
               {{ item.mixedVehiclePercentage }}%
             </template>
             <template #[`item.status`]="{ item }">
-              <v-chip v-if="item.status">{{ item.status }}</v-chip>
+              <RouteProp
+                v-if="item.status"
+                v-bind="statuses.find(({ value }) => value === item.status)"
+              />
             </template>
             <template #[`item.ferry`]="{ item }">
               <NuxtLink :to="`/ferries/${item.ferry.code}`">{{
@@ -46,10 +60,64 @@
 
 <script>
 import CCRouteFromCode from '~/apollo/queries/CCRouteFromCode'
+import routeprops from '~/assets/routeprops.json'
 
 export default {
   data() {
     return {
+      routeprops,
+      statuses: [
+        {
+          text: 'On time',
+          value: 'GOOD',
+          color: 'green',
+        },
+        {
+          text: 'Medical emergency',
+          value: 'MEDI',
+          color: 'orange',
+        },
+        {
+          text: 'Peak travel; Loading max number of vehicles',
+          value: 'PEAK',
+          color: 'orange',
+        },
+        {
+          text: 'Loading as many vehicles as possible',
+          value: 'VHCL',
+          color: 'orange',
+        },
+        {
+          text: 'Earlier loading procedure causing ongoing delay',
+          value: 'ONGN',
+          color: 'orange',
+        },
+        {
+          text: 'Vessel start up delay, departing ASAP',
+          value: 'DELA',
+          color: 'orange',
+        },
+        {
+          text: 'Loading and unloading multiple ships',
+          value: 'SHIP',
+          color: 'orange',
+        },
+        {
+          text: 'Crew member enroute to assist with boarding',
+          value: 'CREW',
+          color: 'blue',
+        },
+        {
+          text: 'Cancelled',
+          value: 'CNCL',
+          color: 'red',
+        },
+        {
+          text: 'Helping customers',
+          value: 'HELP',
+          color: 'blue',
+        },
+      ],
       sailings: [
         {
           text: 'Upcoming',

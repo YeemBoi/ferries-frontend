@@ -19,17 +19,14 @@
               </td>
               <td>
                 <v-chip-group v-model="filterChipProps" column multiple>
-                  <v-chip
-                    v-for="chipProp in chipProperties.filter(
+                  <RouteProp
+                    v-for="chipProp in routeprops.filter(
                       (chipProp) => item[chipProp.value]
                     )"
                     :key="chipProp.value"
-                    :value="chipProp.value"
-                    :color="chipProp.color"
+                    v-bind="chipProp"
                     filter
-                  >
-                    {{ chipProp.text }}
-                  </v-chip>
+                   />
                 </v-chip-group>
               </td>
             </tr>
@@ -41,6 +38,8 @@
 </template>
 
 <script>
+import routeprops from '~/assets/routeprops.json'
+
 export default {
   props: {
     route: {
@@ -55,43 +54,7 @@ export default {
   data() {
     return {
       filterChipProps: [],
-      chipProperties: [
-        {
-          value: 'isBookable',
-          text: 'Bookable',
-          color: 'green',
-        },
-        {
-          value: 'isWalkOn',
-          text: 'Walk-on',
-          color: 'blue',
-        },
-        {
-          value: 'limitedAvailability',
-          text: 'Limited',
-          color: 'red',
-        },
-        {
-          value: 'allowWalkOnOptions',
-          text: 'Walk-on options',
-          color: 'teal',
-        },
-        {
-          value: 'allowMotorcycles',
-          text: 'Motorcycles',
-          color: 'orange',
-        },
-        {
-          value: 'allowLivestock',
-          text: 'Livestock',
-          color: 'brown',
-        },
-        {
-          value: 'allowAdditionalPassengerTypes',
-          text: 'Other passenger types',
-          color: 'grey',
-        },
-      ],
+      routeprops,
     }
   },
   head() {

@@ -1,6 +1,6 @@
 # BC Ferries Unofficial site
 
-This is a frontend to accompany for the bc-ferries-graphql backend.
+This is a frontend to accompany the [bc-ferries-graphql](https://github.com/YeemBoi/bc-ferries-graphql) backend.
 
 ## Nuxt info
 

@@ -23,7 +23,7 @@
       </p>
       <p>
         <b>Thank you for using,</b> and please report any bugs / issues / recommendations on the 
-        <ExtLink to="https://bcferries.com/YeemBoi/ferries/issues">issues page</ExtLink>.
+        <ExtLink to="https://github.com/YeemBoi/ferries-frontend/issues">issues page</ExtLink>.
       </p>
     </div>
   </div>

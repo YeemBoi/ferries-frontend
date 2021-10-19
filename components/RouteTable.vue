@@ -15,6 +15,7 @@
           :headers="headers"
           :items-per-page="-1"
           :search="search"
+          item-class="class"
           @click:row="emitRowClick"
         />
       </template>
@@ -23,7 +24,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     items: {
@@ -59,10 +59,11 @@ export default {
   },
   methods: {
     getRoute(item) {
-      if (!this.routeAttr) {
-        return item
+      if (this.routeAttr) {
+        item = item[this.routeAttr]
       }
-      return item[this.routeAttr]
+      item.class = 'cursor-pointer'
+      return item
     },
     emitRowClick(item, vals) {
       this.$emit('click:row', item, vals)
@@ -71,8 +72,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.contents-only {
-  display: contents;
+<style>
+.cursor-pointer {
+  cursor: pointer;
 }
 </style>
