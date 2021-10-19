@@ -102,6 +102,7 @@ export default {
     },
     scheduledSailings: {
       query: scheduledSailingFromCodes,
+      prefetch: false,
       variables() {
         return {
           originCode: this.$route.params.originCode,
