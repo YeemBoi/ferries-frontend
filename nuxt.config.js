@@ -6,30 +6,27 @@ export default {
     titleTemplate: '%s | BC Ferries (Unofficial)',
     title: 'BC Ferries Unofficial tracker',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en-ca',
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui',
+      },
       { hid: 'description', name: 'description', content: '' },
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/links.css'
-  ],
+  css: ['~/assets/links.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/axios',
-    '~/plugins/helpers'
-  ],
+  plugins: ['~/plugins/helpers'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -45,24 +42,17 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
     '@nuxtjs/sitemap',
     '@nuxtjs/apollo',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
-
   apollo: {
     clientConfigs: {
-      default: '~/plugins/apollo.js',
-      /*
-      alternativeClient: {
-        httpEndpoint:        process.env.INTERNAL_GRAPHQL_URL || 'http://127.0.0.1:8000/graphql',
-        browserHttpEndpoint: process.env.EXTERNAL_GRAPHQL_URL || 'http://127.0.0.1:8000/graphql',
-      }
-      */
-    }
+      default: {
+        httpEndpoint: process.env.INTERNAL_GRAPHQL_URL,
+        browserHttpEndpoint: process.env.EXTERNAL_GRAPHQL_URL,
+      },
+    },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -78,10 +68,10 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
+          success: colors.green.accent3,
+        },
+      },
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -90,6 +80,5 @@ export default {
   },
   server: {
     host: '0.0.0.0',
-    port: process.env.PORT || '3040',
   },
 }

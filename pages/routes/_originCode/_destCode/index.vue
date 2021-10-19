@@ -9,44 +9,50 @@
             </v-container>
           </div>
           <v-container class="align-self-stretch">
-            <ApolloResult
-              :items="scheduledSailings"
-              use-all
-              :query="$apollo.queries.scheduledSailings"
-            >
-              <template #default="sailings">
-                <v-data-table
-                  :items="sailings.all"
-                  :loading="sailings.loading"
-                  :headers="scheduledHeaders"
-                >
-                  <template #[`item.time`]="{ item }">
-                    <TimeOfDay :time="item.time" />
-                  </template>
-                  <template #[`item.sailing.duration`]="{ item }">
-                    {{ item.sailing.duration.replace(/:00(?!.*:00)/, '') }}
-                  </template>
-                  <template #[`item.sailing.stops`]="{ item }">
-                    <ul v-if="item.sailing.stops.edges.length">
-                      <li
-                        v-for="stop in $items(item.sailing.stops)"
-                        :key="stop.id"
+            <client-only>
+              <ApolloResult
+                :items="scheduledSailings"
+                use-all
+                :query="$apollo.queries.scheduledSailings"
+              >
+                <template #default="sailings">
+                  <v-data-table
+                    :items="sailings.all"
+                    :loading="sailings.loading"
+                    :headers="scheduledHeaders"
+                  >
+                    <template #[`item.time`]="{ item }">
+                      <TimeOfDay :time="item.time" />
+                    </template>
+                    <template #[`item.sailing.duration`]="{ item }">
+                      {{ item.sailing.duration.replace(/:00(?!.*:00)/, '') }}
+                    </template>
+                    <template #[`item.sailing.stops`]="{ item }">
+                      <ul v-if="item.sailing.stops.edges.length">
+                        <li
+                          v-for="stop in $items(item.sailing.stops)"
+                          :key="stop.id"
+                        >
+                          {{
+                            stop.isTransfer ? 'Transfer at' : 'Stop at'
+                          }}&nbsp;
+                          <NuxtLink :to="`/terminals/${stop.terminal.code}`">{{
+                            stop.terminal.name
+                          }}</NuxtLink>
+                          <span v-if="!stop.isCertain">&nbsp; (?)</span>
+                        </li>
+                      </ul>
+                      <span v-else>Direct sailing</span>
+                    </template>
+                    <template #[`item.sailing.officialPage`]="{ item }">
+                      <ExtLink :to="item.sailing.officialPage"
+                        >Official Page</ExtLink
                       >
-                        {{ stop.isTransfer ? 'Transfer at' : 'Stop at' }}&nbsp;
-                        <NuxtLink :to="`/terminals/${stop.terminal.code}`">{{
-                          stop.terminal.name
-                        }}</NuxtLink>
-                        <span v-if="!stop.isCertain">&nbsp; (?)</span>
-                      </li>
-                    </ul>
-                    <span v-else>Direct sailing</span>
-                  </template>
-                  <template #[`item.sailing.officialPage`]="{ item }">
-                    <ExtLink :to="item.sailing.officialPage">Official Page</ExtLink>
-                  </template>
-                </v-data-table>
-              </template>
-            </ApolloResult>
+                    </template>
+                  </v-data-table>
+                </template>
+              </ApolloResult>
+            </client-only>
           </v-container>
         </div>
       </Route>

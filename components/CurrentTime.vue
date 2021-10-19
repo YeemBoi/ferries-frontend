@@ -14,7 +14,7 @@ export default {
   computed: {
     friendlyTime() {
       const date = new Date(this.time)
-      let timeStr = date.toLocaleTimeString().replace(/:00(?!.*:00)/, '')
+      let timeStr = date.toLocaleTimeString('en-US', { hour12: true, second: null })
       if (date.getDate() === this.$now().getDate() +1 ) {
           timeStr += " tomorrow"
       }
