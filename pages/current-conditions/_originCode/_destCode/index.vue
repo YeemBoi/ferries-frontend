@@ -35,6 +35,11 @@
             <template #[`item.status`]="{ item }">
               <SailingStatus v-if="item.status" :code="item.status" />
             </template>
+            <template #[`item.officialPage`]="{ item }">
+              <ExtLink v-if="item.officialPage" :to="item.officialPage"
+                >Official page</ExtLink
+              >
+            </template>
             <template #[`item.ferry`]="{ item }">
               <NuxtLink v-if="item.ferry" :to="`/ferries/${item.ferry.code}`">{{
                 item.ferry.name
@@ -88,6 +93,11 @@ export default {
               value: 'ferry',
             },
             {
+              text: 'Official page',
+              value: 'officialPage',
+              sortable: false,
+            },
+            {
               text: 'Last updated',
               value: 'fetchedTime',
             },
@@ -116,6 +126,11 @@ export default {
             {
               text: 'Ferry',
               value: 'ferry',
+            },
+            {
+              text: 'Official page',
+              value: 'officialPage',
+              sortable: false,
             },
             {
               text: 'Last updated',

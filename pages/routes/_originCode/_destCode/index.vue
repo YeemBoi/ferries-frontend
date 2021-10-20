@@ -84,6 +84,7 @@ export default {
         {
           text: 'Official page',
           value: 'sailing.officialPage',
+          sortable: false,
         },
         {
           text: 'Time fetched',

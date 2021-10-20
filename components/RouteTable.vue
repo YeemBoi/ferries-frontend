@@ -5,6 +5,7 @@
       append-icon="mdi-magnify"
       label="Search"
       single-line
+      filled
       hide-details
     ></v-text-field>
     <ApolloResult :items="items" use-all :query="query">

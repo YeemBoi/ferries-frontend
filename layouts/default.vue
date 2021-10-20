@@ -43,6 +43,11 @@ export default {
       drawer: false,
       items: [
         {
+          icon: 'mdi-map-marker',
+          title: 'Terminals',
+          to: '/terminals',
+        },
+        {
           icon: 'mdi-map-marker-path',
           title: 'Routes & Schedules',
           to: '/routes',

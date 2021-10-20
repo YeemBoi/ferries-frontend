@@ -6,6 +6,7 @@
       label="Search"
       single-line
       hide-details
+      filled
     ></v-text-field>
     <ApolloResult :items="allFerries" :query="$apollo.queries.allFerries" use-all>
       <template #default="ferryItems">
