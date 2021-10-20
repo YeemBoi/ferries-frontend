@@ -7,13 +7,27 @@ export default {
   props: {
     time: {
       type: String,
-      required: true,
-    }
+      required: false,
+      default: null,
+    },
+    checkTmrw: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     friendlyTime() {
-      return new Date(this.time).toLocaleTimeString().replace(/:00(?!.*:00)/, '')
-    }
+      const date = new Date(this.time)
+      let timeStr = date.toLocaleTimeString([], {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      })
+      if (this.checkTmrw && date.getDate() === this.$now().getDate() + 1) {
+        timeStr += ' tomorrow'
+      }
+      return timeStr
+    },
   },
 }
 </script>

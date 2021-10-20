@@ -73,6 +73,13 @@ export default {
       },
     },
   },
+  
+  loading: {
+    color: colors.blue.darken2,
+    failedColor: colors.deepOrange.accent4,
+    throttle: 150,
+    height: '4px'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

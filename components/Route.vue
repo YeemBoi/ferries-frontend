@@ -18,16 +18,12 @@
                 {{ item.lengthType.toLowerCase() }}
               </td>
               <td>
-                <v-chip-group v-model="filterChipProps" column multiple>
-                  <RouteProp
-                    v-for="chipProp in routeprops.filter(
-                      (chipProp) => item[chipProp.value]
-                    )"
-                    :key="chipProp.value"
-                    v-bind="chipProp"
-                    filter
-                   />
-                </v-chip-group>
+                <RouteProps
+                  v-model="filterChipProps"
+                  :route="item"
+                  :group-props="{ column: true }"
+                  filter
+                />
               </td>
             </tr>
           </tbody>
@@ -38,8 +34,6 @@
 </template>
 
 <script>
-import routeprops from '~/assets/routeprops.json'
-
 export default {
   props: {
     route: {
@@ -54,7 +48,6 @@ export default {
   data() {
     return {
       filterChipProps: [],
-      routeprops,
     }
   },
   head() {

@@ -1,5 +1,9 @@
 <template>
-  <RouteTable :items="allRoutes" :query="$apollo.queries.allRoutes" @click:row="handleRowClick" />
+  <RouteTable
+    :items="allRoutes"
+    :query="$apollo.queries.allRoutes"
+    @click:row="handleRowClick"
+  />
 </template>
 
 <script>
