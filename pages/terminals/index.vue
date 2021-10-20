@@ -7,6 +7,7 @@
         label="Search"
         single-line
         hide-details
+        outlined
         filled
       ></v-text-field>
     </v-container>
