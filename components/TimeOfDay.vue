@@ -19,6 +19,7 @@ export default {
     friendlyTime() {
       const date = new Date(this.time)
       let timeStr = date.toLocaleTimeString([], {
+        timeZone: 'America/Vancouver',
         hour: 'numeric',
         minute: '2-digit',
         hour12: true,
