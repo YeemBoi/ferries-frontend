@@ -30,7 +30,7 @@ export default {
           color: 'orange',
         },
         {
-          text: 'Peak travel; Loading max number of vehicles',
+          text: 'Peak travel; loading max number of vehicles',
           value: 'PEAK',
           color: 'orange',
         },
@@ -40,7 +40,7 @@ export default {
           color: 'orange',
         },
         {
-          text: 'Earlier loading procedure causing ongoing delay',
+          text: 'Earlier loading procedure is causing ongoing delay',
           value: 'ONGN',
           color: 'orange',
         },
