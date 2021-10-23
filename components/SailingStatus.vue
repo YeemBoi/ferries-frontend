@@ -40,8 +40,13 @@ export default {
           color: 'orange',
         },
         {
-          text: 'Earlier loading procedure is causing ongoing delay',
+          text: 'Earlier loading procedure is causing an ongoing delay',
           value: 'ONGN',
+          color: 'orange',
+        },
+        {
+          text: 'Mechanical issue causing ongoing delays',
+          value: 'MECH',
           color: 'orange',
         },
         {
