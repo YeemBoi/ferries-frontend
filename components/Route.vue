@@ -53,7 +53,7 @@ export default {
   head() {
     if (this.setHead) {
       return {
-        title: `${this.route.origin.name} to ${this.route.destination.name}`,
+        title: `${this.route.origin.name} to ${this.route.destination.name}`.replaceAll(\s*\(.*?\), ''),
       }
     }
   },
