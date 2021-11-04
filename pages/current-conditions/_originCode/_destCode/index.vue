@@ -13,6 +13,7 @@
           <v-data-table
             :items="$items(routeInfoItem[sailing.value])"
             :headers="sailing.headers"
+            sort-by="scheduledTime"
           >
             <template #[`item.scheduledTime`]="{ item }">
               <TimeOfDay check-tmrw :time="item.scheduledTime" />
