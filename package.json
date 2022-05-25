@@ -14,7 +14,7 @@
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/sitemap": "^2.4.0",
-    "core-js": "^3.21.0",
+    "core-js": "^3.22.7",
     "nuxt": "^2.15.7",
     "vuetify": "^2.6.3"
   },
